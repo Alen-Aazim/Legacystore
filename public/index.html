@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Store - Premium Discord Services</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="gradient-orb orb-4"></div>
+        <div class="gradient-orb orb-5"></div>
+        <div class="mesh-grid"></div>
+        <div class="particles" id="particles"></div>
+        <div class="glow-lines"></div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-crown"></i>
+                <div class="logo-glow"></div>
+            </div>
+            <span class="logo-text">LEGACY<span class="highlight">STORE</span></span>
+        </div>
+        <nav>
+            <a href="#products"><i class="fas fa-box"></i> Products</a>
+            <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="#" onclick="openAdminLogin(); return false;" class="admin-link"><i class="fas fa-lock"></i> Admin</a>
+        </nav>
+        <div class="header-actions">
+            <div class="cart-icon" onclick="openCart()">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+                <div class="cart-pulse"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <div class="badge-glow"></div>
+                    <i class="fas fa-fire"></i>
+                    <span>Hot Deals Available</span>
+                </div>
+                <h1>
+                    <span class="gradient-text animated-gradient">LEGACY</span>
+                    <span class="outline-text glitch" data-text="STORE">STORE</span>
+                </h1>
+                <p class="hero-subtitle">Premium Discord Services at Unbeatable Prices</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <span class="stat-number counter" data-target="10000">0</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <div class="stat-icon"><i class="fas fa-headset"></i></div>
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Secure</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#products" class="hero-cta primary">
+                        <span>Explore Products</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="hero-cta secondary">
+                        <span>Contact Us</span>
+                        <i class="fas fa-comment-dots"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="float-card card-1">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <div class="float-card card-2">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="float-card card-3">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="float-card card-4">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                </div>
+                <div class="hero-circle"></div>
+                <div class="hero-ring"></div>
+            </div>
+        </section>
+
+        <section class="marquee-section">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <span><i class="fas fa-star"></i> INSTANT DELIVERY</span>
+                    <span><i class="fas fa-star"></i> BEST PRICES</span>
+                    <span><i class="fas fa-star"></i> 24/7 SUPPORT</span>
+                    <span><i class="fas fa-star"></i> 100% SECURE</span>
+                    <span><i class="fas fa-star"></i> TRUSTED SELLER</span>
+                    <span><i class="fas fa-star"></i> INSTANT DELIVERY</span>
+                    <span><i class="fas fa-star"></i> BEST PRICES</span>
+                    <span><i class="fas fa-star"></i> 24/7 SUPPORT</span>
+                    <span><i class="fas fa-star"></i> 100% SECURE</span>
+                    <span><i class="fas fa-star"></i> TRUSTED SELLER</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="products-section">
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-fire"></i> Our Collection</span>
+                <h2>Premium Products</h2>
+                <p>Choose from our exclusive selection of Discord services</p>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-medal"></i> Why Us</span>
+                <h2>Why Choose Legacy Store?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                        <div class="feature-glow"></div>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Get your products delivered within minutes of purchase</p>
+                    <div class="feature-decoration"></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="feature-glow"></div>
+                    </div>
+                    <h3>100% Secure</h3>
+                    <p>All transactions are encrypted and completely safe</p>
+                    <div class="feature-decoration"></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                        <div class="feature-glow"></div>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our team is always ready to assist you anytime</p>
+                    <div class="feature-decoration"></div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                        <div class="feature-glow"></div>
+                    </div>
+                    <h3>Best Prices</h3>
+                    <p>Unbeatable deals you won't find anywhere else</p>
+                    <div class="feature-decoration"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="section-header">
+                <span class="section-badge"><i class="fas fa-heart"></i> Reviews</span>
+                <h2>What Our Customers Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Super fast delivery and great prices! Got my Nitro in less than 5 minutes."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-info">
+                            <h4>X3yr4</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Best Discord shop I've used. The support team is amazing and very helpful!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Corleone</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Incredible value for money. I recommend Legacy Store to all my friends."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div class="author-info">
+                            <h4>DavidLuther</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-bag"></i> Your Cart</h3>
+            <button class="close-cart" onclick="closeCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-basket"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">₹0.00</span>
+            </div>
+            <div class="checkout-details-form" id="checkoutDetailsForm">
+                <div class="form-group">
+                    <label>Discord Username</label>
+                    <input type="text" id="checkoutDiscord" placeholder="e.g. user#1234" required>
+                </div>
+                <div class="form-group">
+                    <label>Telegram Username (Optional)</label>
+                    <input type="text" id="checkoutTelegram" placeholder="@username">
+                </div>
+                <div class="form-group">
+                    <label>Instagram (Optional)</label>
+                    <input type="text" id="checkoutInstagram" placeholder="@username">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="checkoutMessage" placeholder="Your message..."></textarea>
+                </div>
+            </div>
+            <div class="payment-method-selector">
+                <label>Select Payment Method:</label>
+                <div class="payment-options">
+                    <button class="payment-opt active" onclick="selectPaymentMethod('upi')">UPI</button>
+                    <button class="payment-opt" onclick="selectPaymentMethod('ltc')">LTC</button>
+                </div>
+            </div>
+            <button class="checkout-btn" onclick="proceedToCheckout()">
+                <i class="fas fa-credit-card"></i>
+                <span>Checkout</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content checkout-modal">
+            <button class="close-modal" onclick="closeCheckoutModal()"><i class="fas fa-times"></i></button>
+            <div id="checkoutStep1" class="checkout-step">
+                <div class="checkout-header">
+                    <i class="fas fa-qrcode"></i>
+                    <h2 id="paymentTitle">Scan to Pay</h2>
+                </div>
+                <div class="qr-container" id="qrContainer">
+                    <div id="qrCode" class="qr-code"></div>
+                </div>
+                <div id="ltcAddressContainer" class="ltc-address-container hidden">
+                    <p>LTC Address:</p>
+                    <code id="ltcAddress">LTC_ADDRESS_HERE</code>
+                    <button class="copy-btn" onclick="copyLTC()">Copy</button>
+                </div>
+                <p class="payment-info" id="paymentInfo">Scan the QR code with your payment app</p>
+                <button class="confirm-btn" onclick="confirmPayment()">
+                    <i class="fas fa-check-circle"></i>
+                    <span>I've Completed Payment</span>
+                </button>
+            </div>
+            <div id="checkoutStep2" class="checkout-step hidden">
+                <div class="success-animation">
+                    <div class="success-checkmark">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+                <h2>Thank You!</h2>
+                <p>Your order has been received. Contact us for delivery:</p>
+                <div class="contact-buttons">
+                    <a href="https://t.me/alen_ftw" target="_blank" class="contact-btn telegram">
+                        <i class="fab fa-telegram"></i>
+                        <span>Telegram</span>
+                    </a>
+                    <a href="https://discord.gg/9NYH7XY3W2" target="_blank" class="contact-btn discord">
+                        <i class="fab fa-discord"></i>
+                        <span>Discord</span>
+                    </a>
+                    <a href="https://instagram.com/legacycustoms" target="_blank" class="contact-btn instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content login-modal">
+            <button class="close-modal" onclick="closeLoginModal()"><i class="fas fa-times"></i></button>
+            <div class="login-header">
+                <div class="login-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h2>Admin Login</h2>
+                <p>Enter your credentials to access the admin panel</p>
+            </div>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter username" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <div class="password-input">
+                        <input type="password" id="loginPassword" placeholder="Enter password" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword()">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="loginError" class="login-error hidden">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>Invalid username or password</span>
+                </div>
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Login</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="adminModal">
+        <div class="modal-content admin-modal">
+            <button class="close-modal" onclick="closeAdminPanel()"><i class="fas fa-times"></i></button>
+            <div class="admin-header">
+                <div class="admin-title">
+                    <i class="fas fa-cog"></i>
+                    <h2>Product Management</h2>
+                </div>
+                <button class="logout-btn" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchAdminTab('add')">
+                    <i class="fas fa-plus"></i> Add Product
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('manage')">
+                    <i class="fas fa-list"></i> Manage Products
+                </button>
+            </div>
+            <div id="addProductTab" class="admin-content">
+                <form id="productForm" onsubmit="saveProduct(event)">
+                    <input type="hidden" id="editProductId">
+                    <div class="form-group">
+                        <label><i class="fas fa-tag"></i> Product Name</label>
+                        <input type="text" id="productName" placeholder="e.g., Discord Nitro" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-clock"></i> Duration</label>
+                        <input type="text" id="productDuration" placeholder="e.g., 1 Month" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-dollar-sign"></i> Price</label>
+                            <input type="number" id="productPrice" step="0.01" placeholder="9.99" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-tag"></i> Original Price</label>
+                            <input type="number" id="productOriginalPrice" step="0.01" placeholder="19.99" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-image"></i> Product Image URL</label>
+                        <input type="url" id="productImage" placeholder="https://example.com/image.png">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-qrcode"></i> Custom QR Code URL (Optional)</label>
+                        <input type="url" id="productQR" placeholder="https://example.com/qr.png">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fab fa-bitcoin"></i> Custom LTC Address (Optional)</label>
+                        <input type="text" id="productLTC" placeholder="LTC Address">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-palette"></i> Card Color Theme</label>
+                        <select id="productColor">
+                            <option value="purple">Purple Galaxy</option>
+                            <option value="blue">Ocean Blue</option>
+                            <option value="pink">Rose Pink</option>
+                            <option value="gold">Golden</option>
+                            <option value="green">Emerald</option>
+                            <option value="orange">Sunset Orange</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-save"></i>
+                        <span id="submitBtnText">Add Product</span>
+                    </button>
+                </form>
+            </div>
+            <div id="manageProductTab" class="admin-content hidden">
+                <div class="product-list" id="adminProductList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+    <footer id="contact">
+        <div class="footer-glow"></div>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <i class="fas fa-crown"></i>
+                    <h3>LEGACY<span>STORE</span></h3>
+                </div>
+                <p>Premium Discord services at the best prices. Trusted by thousands of customers worldwide.</p>
+                <div class="trust-badges">
+                    <div class="trust-badge"><i class="fas fa-check-circle"></i> Verified Seller</div>
+                    <div class="trust-badge"><i class="fas fa-shield-alt"></i> Secure Payments</div>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#products"><i class="fas fa-chevron-right"></i> Products</a>
+                <a href="#about"><i class="fas fa-chevron-right"></i> About Us</a>
+                <a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a>
+            </div>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="https://t.me/alen_ftw" target="_blank" class="social-telegram">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://discord.gg/9NYH7XY3W2" target="_blank" class="social-discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://instagram.com/legacycustoms" target="_blank" class="social-instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <p class="footer-handle">@legacycustoms</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Legacy Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

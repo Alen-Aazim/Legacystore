@@ -3,318 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legacy Store — Premium Discord Services</title>
+    <title>LEGACY.STORE — Next-Gen Discord Services</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="bg-scene">
-        <div class="bg-grid"></div>
-        <div class="bg-glow glow-1"></div>
-        <div class="bg-glow glow-2"></div>
-        <div class="bg-glow glow-3"></div>
+    <div class="cyber-bg">
+        <canvas id="bgCanvas"></canvas>
+        <div class="scanlines"></div>
+        <div class="hex-grid"></div>
+        <div class="corner-tl"></div>
+        <div class="corner-tr"></div>
+        <div class="corner-bl"></div>
+        <div class="corner-br"></div>
     </div>
 
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-logo">
-                <div class="logo-mark"><i class="fas fa-crown"></i></div>
-                <span>Legacy<span class="accent">Store</span></span>
-            </a>
+    <div class="live-feed" id="liveFeed"></div>
 
-            <div class="nav-links" id="navLinks">
-                <a href="#products" class="nav-link" onclick="closeMobileMenu()">Products</a>
-                <a href="#features" class="nav-link" onclick="closeMobileMenu()">Features</a>
-                <a href="#reviews" class="nav-link" onclick="closeMobileMenu()">Reviews</a>
-                <a href="#faq" class="nav-link" onclick="closeMobileMenu()">FAQ</a>
-                <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
-                <a href="#" class="nav-link admin-nav" onclick="openAdminLogin(); closeMobileMenu(); return false;"><i class="fas fa-lock"></i> Admin</a>
+    <header class="cyber-header" id="cyberHeader">
+        <div class="header-inner">
+            <div class="logo-block">
+                <div class="logo-hex">
+                    <svg viewBox="0 0 60 60" fill="none"><polygon points="30,2 56,16 56,44 30,58 4,44 4,16" stroke="currentColor" stroke-width="2" fill="none"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="22" fill="currentColor" font-family="Orbitron">L</text></svg>
+                </div>
+                <div class="logo-text-block">
+                    <span class="logo-main">LEGACY<span class="logo-dot">.</span>STORE</span>
+                    <span class="logo-sub">// DISCORD SERVICES v2.0</span>
+                </div>
             </div>
 
-            <div class="nav-actions">
-                <button class="wishlist-btn" onclick="openWishlist()" title="Wishlist">
+            <nav class="cyber-nav" id="cyberNav">
+                <a href="#products" class="cnav" onclick="closeMobileMenu()"><span class="cnav-num">01</span>PRODUCTS</a>
+                <a href="#specs" class="cnav" onclick="closeMobileMenu()"><span class="cnav-num">02</span>SPECS</a>
+                <a href="#reviews" class="cnav" onclick="closeMobileMenu()"><span class="cnav-num">03</span>REVIEWS</a>
+                <a href="#faq" class="cnav" onclick="closeMobileMenu()"><span class="cnav-num">04</span>FAQ</a>
+                <a href="#" class="cnav cnav-admin" onclick="openAdminLogin(); closeMobileMenu(); return false;"><i class="fas fa-terminal"></i>ADMIN</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="hbtn wishlist-trigger" onclick="openWishlist()" title="Wishlist">
                     <i class="fas fa-heart"></i>
-                    <span class="wishlist-count" id="wishlistCount">0</span>
+                    <span class="hbtn-badge" id="wishlistCount">0</span>
                 </button>
-                <button class="cart-btn" onclick="openCart()" title="Cart">
+                <button class="hbtn cart-trigger" onclick="openCart()" title="Cart">
                     <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge" id="cartCount">0</span>
+                    <span class="hbtn-badge" id="cartCount">0</span>
                 </button>
-                <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <button class="hamburger-cyber" id="hamburger" onclick="toggleMobileMenu()">
                     <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
-    </nav>
+        <div class="header-line"></div>
+    </header>
 
     <main>
 
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-pill">
-                        <span class="pill-dot"></span>
-                        <span>Now live — Hot deals available</span>
+        <section class="hero-cyber">
+            <div class="hero-bg-text">LEGACY</div>
+            <div class="hero-inner">
+                <div class="hero-left">
+                    <div class="status-bar">
+                        <span class="status-dot"></span>
+                        <span class="status-text" id="statusText">SYSTEM ONLINE — ALL SERVICES ACTIVE</span>
                     </div>
-                    <h1 class="hero-title">
-                        Premium Discord<br>
-                        <span class="title-highlight">Services</span> at<br>
-                        Unbeatable Prices
+                    <h1 class="hero-h1">
+                        <span class="line-1">NEXT-GEN</span>
+                        <span class="line-2">DISCORD <span class="neon-word">SERVICES</span></span>
+                        <span class="line-3">REDEFINED.</span>
                     </h1>
-                    <p class="hero-desc">The most trusted Discord store. Get Nitro, Server Boosts and more — instant delivery, guaranteed.</p>
-                    <div class="hero-actions">
-                        <a href="#products" class="btn btn-primary">
-                            <i class="fas fa-bolt"></i> Browse Products
-                        </a>
-                        <a href="#contact" class="btn btn-ghost">
-                            <i class="fab fa-discord"></i> Join Discord
-                        </a>
+                    <p class="hero-para">Premium Discord Nitro, Server Boosts & more. Instant delivery. Verified seller. Zero risk.</p>
+                    <div class="deal-timer-block">
+                        <div class="deal-label"><i class="fas fa-bolt"></i> FLASH DEAL ENDS IN</div>
+                        <div class="timer-digits">
+                            <div class="tdig"><span id="timerH">00</span><small>HRS</small></div>
+                            <div class="tsep">:</div>
+                            <div class="tdig"><span id="timerM">00</span><small>MIN</small></div>
+                            <div class="tsep">:</div>
+                            <div class="tdig"><span id="timerS">00</span><small>SEC</small></div>
+                        </div>
                     </div>
-                    <div class="hero-stats">
-                        <div class="hstat">
-                            <strong class="counter" data-target="10000">0</strong>
-                            <span>Customers</span>
-                        </div>
-                        <div class="hstat-divider"></div>
-                        <div class="hstat">
-                            <strong>24/7</strong>
-                            <span>Support</span>
-                        </div>
-                        <div class="hstat-divider"></div>
-                        <div class="hstat">
-                            <strong>100%</strong>
-                            <span>Secure</span>
-                        </div>
+                    <div class="hero-btns">
+                        <a href="#products" class="cbtn cbtn-primary">
+                            <span class="cbtn-text">EXPLORE PRODUCTS</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="https://discord.gg/9NYH7XY3W2" target="_blank" class="cbtn cbtn-ghost">
+                            <i class="fab fa-discord"></i>
+                            <span class="cbtn-text">JOIN DISCORD</span>
+                        </a>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="orbit-ring ring-outer">
-                        <div class="orbit-dot dot-1"><i class="fab fa-discord"></i></div>
-                        <div class="orbit-dot dot-2"><i class="fas fa-crown"></i></div>
+                <div class="hero-right">
+                    <div class="hologram-card">
+                        <div class="holo-frame">
+                            <div class="holo-corner hc-tl"></div>
+                            <div class="holo-corner hc-tr"></div>
+                            <div class="holo-corner hc-bl"></div>
+                            <div class="holo-corner hc-br"></div>
+                            <div class="holo-inner">
+                                <i class="fab fa-discord holo-icon"></i>
+                                <div class="holo-label">DISCORD NITRO</div>
+                                <div class="holo-price">FROM ₹2.99</div>
+                                <div class="holo-bars">
+                                    <div class="hbar" style="--w:90%"></div>
+                                    <div class="hbar" style="--w:70%"></div>
+                                    <div class="hbar" style="--w:55%"></div>
+                                </div>
+                                <div class="holo-stat-row">
+                                    <div class="holo-stat"><span class="counter" data-target="10000">0</span>+<small>USERS</small></div>
+                                    <div class="holo-stat"><span>4.9</span><small>RATING</small></div>
+                                    <div class="holo-stat"><span>&lt;5m</span><small>DELIVERY</small></div>
+                                </div>
+                            </div>
+                            <div class="holo-scan"></div>
+                        </div>
+                        <div class="holo-glow"></div>
                     </div>
-                    <div class="orbit-ring ring-mid">
-                        <div class="orbit-dot dot-3"><i class="fas fa-gem"></i></div>
-                    </div>
-                    <div class="hero-center-card">
-                        <i class="fab fa-discord"></i>
-                        <span>Discord Nitro</span>
-                        <span class="card-price">From ₹2.99</span>
-                    </div>
-                    <div class="float-badge badge-top">
-                        <i class="fas fa-shield-alt"></i> Verified Seller
-                    </div>
-                    <div class="float-badge badge-bottom">
-                        <i class="fas fa-bolt"></i> Instant Delivery
+                    <div class="orbit-dots">
+                        <div class="odot odot-1"><i class="fas fa-shield-alt"></i></div>
+                        <div class="odot odot-2"><i class="fas fa-gem"></i></div>
+                        <div class="odot odot-3"><i class="fas fa-crown"></i></div>
+                        <div class="odot odot-4"><i class="fas fa-bolt"></i></div>
                     </div>
                 </div>
+            </div>
+            <div class="scroll-hint">
+                <span>SCROLL TO EXPLORE</span>
+                <div class="scroll-line"></div>
             </div>
         </section>
 
-        <div class="ticker-wrap">
-            <div class="ticker">
-                <span><i class="fas fa-star"></i> INSTANT DELIVERY</span>
-                <span><i class="fas fa-star"></i> BEST PRICES</span>
-                <span><i class="fas fa-star"></i> 24/7 SUPPORT</span>
-                <span><i class="fas fa-star"></i> 100% SECURE</span>
-                <span><i class="fas fa-star"></i> TRUSTED SELLER</span>
-                <span><i class="fas fa-star"></i> INSTANT DELIVERY</span>
-                <span><i class="fas fa-star"></i> BEST PRICES</span>
-                <span><i class="fas fa-star"></i> 24/7 SUPPORT</span>
-                <span><i class="fas fa-star"></i> 100% SECURE</span>
-                <span><i class="fas fa-star"></i> TRUSTED SELLER</span>
+        <div class="stats-belt">
+            <div class="belt-inner">
+                <div class="belt-stat">
+                    <i class="fas fa-users"></i>
+                    <div><strong class="counter" data-target="10000">0</strong>+<span>HAPPY CUSTOMERS</span></div>
+                </div>
+                <div class="belt-divider"></div>
+                <div class="belt-stat">
+                    <i class="fas fa-headset"></i>
+                    <div><strong>24/7</strong><span>LIVE SUPPORT</span></div>
+                </div>
+                <div class="belt-divider"></div>
+                <div class="belt-stat">
+                    <i class="fas fa-shield-alt"></i>
+                    <div><strong>100%</strong><span>SECURE</span></div>
+                </div>
+                <div class="belt-divider"></div>
+                <div class="belt-stat">
+                    <i class="fas fa-bolt"></i>
+                    <div><strong>&lt;5 MIN</strong><span>DELIVERY</span></div>
+                </div>
             </div>
         </div>
 
-        <section id="products" class="section">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">Our Collection</span>
-                    <h2>Choose Your Plan</h2>
-                    <p>Select from our exclusive range of Discord services</p>
+        <section id="products" class="csection">
+            <div class="csection-inner">
+                <div class="csection-head">
+                    <div class="chead-label">// 01 — INVENTORY</div>
+                    <h2 class="chead-title">SELECT YOUR <span class="neon-word">PACKAGE</span></h2>
+                    <p class="chead-sub">Instant activation. No questions asked.</p>
                 </div>
 
-                <div class="products-toolbar">
-                    <div class="search-box">
+                <div class="products-controls">
+                    <div class="search-cyber">
                         <i class="fas fa-search"></i>
-                        <input type="text" id="productSearch" placeholder="Search products..." oninput="filterProducts()">
-                        <button class="clear-search" id="clearSearch" onclick="clearSearch()"><i class="fas fa-times"></i></button>
+                        <input type="text" id="productSearch" placeholder="SEARCH PRODUCTS..." oninput="filterProducts()">
+                        <button id="clearSearch" class="clear-x" onclick="clearSearch()"><i class="fas fa-times"></i></button>
                     </div>
-                    <div class="filter-tabs" id="filterTabs">
-                        <button class="filter-tab active" data-filter="all" onclick="setFilter('all', this)">All</button>
-                        <button class="filter-tab" data-filter="Discord Nitro Basic" onclick="setFilter('Discord Nitro Basic', this)">Nitro Basic</button>
-                        <button class="filter-tab" data-filter="Discord Nitro" onclick="setFilter('Discord Nitro', this)">Nitro</button>
-                        <button class="filter-tab" data-filter="Server Boost" onclick="setFilter('Server Boost', this)">Server Boost</button>
+                    <div class="filter-cyber" id="filterTabs">
+                        <button class="ftab active" data-filter="all" onclick="setFilter('all',this)">ALL</button>
+                        <button class="ftab" data-filter="Discord Nitro Basic" onclick="setFilter('Discord Nitro Basic',this)">NITRO BASIC</button>
+                        <button class="ftab" data-filter="Discord Nitro" onclick="setFilter('Discord Nitro',this)">NITRO</button>
+                        <button class="ftab" data-filter="Server Boost" onclick="setFilter('Server Boost',this)">BOOST</button>
                     </div>
-                    <div class="sort-box">
+                    <div class="sort-cyber">
+                        <i class="fas fa-sort-amount-down"></i>
                         <select id="productSort" onchange="filterProducts()">
-                            <option value="default">Sort: Default</option>
-                            <option value="price-asc">Price: Low to High</option>
-                            <option value="price-desc">Price: High to Low</option>
-                            <option value="discount">Best Discount</option>
+                            <option value="default">SORT: DEFAULT</option>
+                            <option value="price-asc">PRICE ↑</option>
+                            <option value="price-desc">PRICE ↓</option>
+                            <option value="discount">BEST DEAL</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="products-grid" id="productsGrid">
-                    <div class="loading-state">
-                        <div class="spinner"></div>
-                        <p>Loading products...</p>
+                <div class="products-grid-cyber" id="productsGrid">
+                    <div class="cyber-loader">
+                        <div class="loader-ring"></div>
+                        <span>LOADING INVENTORY...</span>
                     </div>
                 </div>
 
-                <div class="empty-products hidden" id="emptyProducts">
-                    <i class="fas fa-search"></i>
-                    <h3>No products found</h3>
-                    <p>Try adjusting your search or filter</p>
-                    <button class="btn btn-outline" onclick="resetFilters()">Reset Filters</button>
+                <div class="empty-cyber hidden" id="emptyProducts">
+                    <i class="fas fa-database"></i>
+                    <h3>NO RESULTS FOUND</h3>
+                    <p>Adjust your search parameters</p>
+                    <button class="cbtn cbtn-ghost" onclick="resetFilters()">RESET FILTERS</button>
                 </div>
             </div>
         </section>
 
-        <section id="features" class="section section-dark">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">Why Us</span>
-                    <h2>Why Choose Legacy Store?</h2>
+        <section id="specs" class="csection csection-alt">
+            <div class="csection-inner">
+                <div class="csection-head">
+                    <div class="chead-label">// 02 — WHY LEGACY</div>
+                    <h2 class="chead-title">SYSTEM <span class="neon-word">SPECS</span></h2>
                 </div>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon cyan"><i class="fas fa-bolt"></i></div>
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <div class="spec-icon cyan"><i class="fas fa-bolt"></i></div>
+                        <div class="spec-bar-label">DELIVERY SPEED</div>
+                        <div class="spec-bar"><div class="spec-fill" data-w="95"></div></div>
                         <h3>Lightning Fast</h3>
-                        <p>Products delivered within minutes of purchase. No waiting, no delays.</p>
+                        <p>Products activated within minutes of payment. Fastest in market.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon purple"><i class="fas fa-shield-alt"></i></div>
-                        <h3>100% Secure</h3>
-                        <p>All transactions are encrypted and completely protected.</p>
+                    <div class="spec-card">
+                        <div class="spec-icon green"><i class="fas fa-shield-alt"></i></div>
+                        <div class="spec-bar-label">SECURITY LEVEL</div>
+                        <div class="spec-bar"><div class="spec-fill" data-w="100"></div></div>
+                        <h3>Fort Knox Security</h3>
+                        <p>Every transaction encrypted. Your data stays private, always.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon green"><i class="fas fa-headset"></i></div>
-                        <h3>24/7 Support</h3>
-                        <p>Our team is always ready to assist you anytime, day or night.</p>
+                    <div class="spec-card">
+                        <div class="spec-icon pink"><i class="fas fa-headset"></i></div>
+                        <div class="spec-bar-label">SUPPORT UPTIME</div>
+                        <div class="spec-bar"><div class="spec-fill" data-w="100"></div></div>
+                        <h3>24/7 Online</h3>
+                        <p>Real humans ready to help around the clock. No bots, no delays.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon orange"><i class="fas fa-tags"></i></div>
-                        <h3>Best Prices</h3>
-                        <p>Unbeatable deals and discounts you won't find anywhere else.</p>
+                    <div class="spec-card">
+                        <div class="spec-icon gold"><i class="fas fa-tags"></i></div>
+                        <div class="spec-bar-label">PRICE VALUE</div>
+                        <div class="spec-bar"><div class="spec-fill" data-w="98"></div></div>
+                        <h3>Unmatched Deals</h3>
+                        <p>Save up to 70% vs retail. No hidden fees, no surprises.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon pink"><i class="fas fa-heart"></i></div>
-                        <h3>Trusted by 10K+</h3>
-                        <p>Over 10,000 happy customers and counting. Join the legacy.</p>
+                    <div class="spec-card">
+                        <div class="spec-icon blue"><i class="fas fa-star"></i></div>
+                        <div class="spec-bar-label">TRUST RATING</div>
+                        <div class="spec-bar"><div class="spec-fill" data-w="98"></div></div>
+                        <h3>4.9/5 Stars</h3>
+                        <p>10,000+ verified customer reviews. The most trusted seller.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon blue"><i class="fas fa-redo"></i></div>
-                        <h3>Easy Returns</h3>
-                        <p>Not satisfied? Reach out and we'll make it right, always.</p>
+                    <div class="spec-card">
+                        <div class="spec-icon purple"><i class="fas fa-redo-alt"></i></div>
+                        <div class="spec-bar-label">SATISFACTION</div>
+                        <div class="spec-bar"><div class="spec-fill" data-w="100"></div></div>
+                        <h3>100% Guarantee</h3>
+                        <p>Not satisfied? We'll make it right. Every. Single. Time.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="reviews" class="section">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">Reviews</span>
-                    <h2>What Customers Say</h2>
+        <section id="reviews" class="csection">
+            <div class="csection-inner">
+                <div class="csection-head">
+                    <div class="chead-label">// 03 — TESTIMONIALS</div>
+                    <h2 class="chead-title">VERIFIED <span class="neon-word">REVIEWS</span></h2>
                 </div>
-                <div class="reviews-grid">
-                    <div class="review-card">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p>"Super fast delivery and great prices! Got my Nitro in less than 5 minutes. Will buy again for sure."</p>
-                        <div class="review-author">
-                            <div class="author-avatar av-1">X3</div>
-                            <div>
-                                <strong>X3yr4</strong>
-                                <span>Verified Buyer</span>
+                <div class="reviews-cyber">
+                    <div class="rcol">
+                        <div class="review-cyber">
+                            <div class="rev-top">
+                                <div class="rev-avatar av-c">X3</div>
+                                <div>
+                                    <strong>X3yr4</strong>
+                                    <div class="rev-stars">★★★★★</div>
+                                </div>
+                                <span class="rev-badge">VERIFIED</span>
                             </div>
+                            <p>"Super fast delivery and great prices! Got my Nitro in less than 5 minutes. Will definitely buy again."</p>
+                        </div>
+                        <div class="review-cyber">
+                            <div class="rev-top">
+                                <div class="rev-avatar av-g">DL</div>
+                                <div>
+                                    <strong>DavidLuther</strong>
+                                    <div class="rev-stars">★★★★★</div>
+                                </div>
+                                <span class="rev-badge">VERIFIED</span>
+                            </div>
+                            <p>"Incredible value. Recommended Legacy Store to all my friends. Best Discord shop period."</p>
                         </div>
                     </div>
-                    <div class="review-card review-featured">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p>"Best Discord shop I've ever used. Support is amazing and prices are unbeatable. Highly recommend Legacy Store!"</p>
-                        <div class="review-author">
-                            <div class="author-avatar av-2">CO</div>
+                    <div class="review-cyber review-cyber-feat">
+                        <div class="feat-quote"><i class="fas fa-quote-left"></i></div>
+                        <p class="feat-text">"Best Discord shop I've ever used. The support team is phenomenal — responded in minutes and resolved my issue instantly. Prices are unbeatable."</p>
+                        <div class="rev-top" style="margin-top:24px">
+                            <div class="rev-avatar av-p">CO</div>
                             <div>
                                 <strong>Corleone</strong>
-                                <span>Verified Buyer</span>
+                                <div class="rev-stars">★★★★★</div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p>"Incredible value for money. Bought Nitro twice now. I recommend Legacy Store to everyone!"</p>
-                        <div class="review-author">
-                            <div class="author-avatar av-3">DL</div>
-                            <div>
-                                <strong>DavidLuther</strong>
-                                <span>Verified Buyer</span>
-                            </div>
+                            <span class="rev-badge">TOP BUYER</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="faq" class="section section-dark">
-            <div class="container">
-                <div class="section-head">
-                    <span class="section-label">FAQ</span>
-                    <h2>Frequently Asked Questions</h2>
+        <section id="faq" class="csection csection-alt">
+            <div class="csection-inner">
+                <div class="csection-head">
+                    <div class="chead-label">// 04 — FAQ</div>
+                    <h2 class="chead-title">COMMON <span class="neon-word">QUERIES</span></h2>
                 </div>
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>How fast is delivery?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>We deliver almost instantly — typically within 5 minutes of payment confirmation. Our team is available 24/7 to ensure you get your order fast.</p>
-                        </div>
+                <div class="faq-cyber">
+                    <div class="faq-c" onclick="toggleFaq(this)">
+                        <div class="faq-q"><span class="faq-num">Q.01</span> How fast is delivery?<i class="fas fa-plus faq-icon"></i></div>
+                        <div class="faq-a"><p>Delivery happens within minutes of payment confirmation. Our team is online 24/7 to process orders instantly.</p></div>
                     </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>What payment methods do you accept?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>We accept UPI (India) and Litecoin (LTC) cryptocurrency. Both methods are secure and fast.</p>
-                        </div>
+                    <div class="faq-c" onclick="toggleFaq(this)">
+                        <div class="faq-q"><span class="faq-num">Q.02</span> What payment methods are accepted?<i class="fas fa-plus faq-icon"></i></div>
+                        <div class="faq-a"><p>We accept UPI (India) and Litecoin (LTC) cryptocurrency. Both are instant and secure.</p></div>
                     </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>Is it safe to buy here?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Absolutely. We have served over 10,000+ customers with a 100% satisfaction rate. Your order details are handled securely and we never share your information.</p>
-                        </div>
+                    <div class="faq-c" onclick="toggleFaq(this)">
+                        <div class="faq-q"><span class="faq-num">Q.03</span> Is it safe to buy here?<i class="fas fa-plus faq-icon"></i></div>
+                        <div class="faq-a"><p>Absolutely. 10,000+ customers served with 100% satisfaction. Orders are handled securely. We never share your data.</p></div>
                     </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>What if I have an issue with my order?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Contact us immediately on Telegram or Discord. We'll resolve any issues within 24 hours. Customer satisfaction is our top priority.</p>
-                        </div>
+                    <div class="faq-c" onclick="toggleFaq(this)">
+                        <div class="faq-q"><span class="faq-num">Q.04</span> What if there's an issue with my order?<i class="fas fa-plus faq-icon"></i></div>
+                        <div class="faq-a"><p>Contact us on Telegram or Discord immediately. We resolve all issues within 24 hours — customer satisfaction guaranteed.</p></div>
                     </div>
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFaq(this)">
-                            <span>Can I buy multiple items at once?</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes! Add multiple products to your cart and checkout in one go. We'll process your entire order together.</p>
-                        </div>
+                    <div class="faq-c" onclick="toggleFaq(this)">
+                        <div class="faq-q"><span class="faq-num">Q.05</span> Can I compare products?<i class="fas fa-plus faq-icon"></i></div>
+                        <div class="faq-a"><p>Yes! Use the compare button on any product card to add it to the comparison panel. Compare up to 2 products side by side.</p></div>
                     </div>
                 </div>
             </div>
@@ -322,269 +340,233 @@
 
     </main>
 
-    <div class="wishlist-sidebar" id="wishlistSidebar">
-        <div class="sidebar-header">
-            <h3><i class="fas fa-heart"></i> Wishlist</h3>
-            <button onclick="closeWishlist()"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="sidebar-body" id="wishlistItems">
-            <div class="sidebar-empty">
-                <i class="fas fa-heart-broken"></i>
-                <p>Your wishlist is empty</p>
-                <button class="btn btn-outline" onclick="closeWishlist()">Browse Products</button>
-            </div>
+    <div class="compare-bar hidden" id="compareBar">
+        <div class="compare-bar-inner">
+            <span class="compare-label"><i class="fas fa-balance-scale"></i> COMPARE MODE</span>
+            <div class="compare-items" id="compareItems"></div>
+            <button class="cbtn cbtn-primary" onclick="openCompare()"><i class="fas fa-columns"></i> COMPARE NOW</button>
+            <button class="cbtn cbtn-ghost" onclick="clearCompare()"><i class="fas fa-times"></i> CLEAR</button>
         </div>
     </div>
 
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="sidebar-header">
-            <h3><i class="fas fa-shopping-bag"></i> Your Cart</h3>
+    <div class="wishlist-panel" id="wishlistPanel">
+        <div class="panel-head">
+            <span><i class="fas fa-heart"></i> WISHLIST</span>
+            <button onclick="closeWishlist()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="panel-body" id="wishlistItems"></div>
+    </div>
+
+    <div class="cart-panel" id="cartPanel">
+        <div class="panel-head">
+            <span><i class="fas fa-shopping-bag"></i> CART</span>
             <button onclick="closeCart()"><i class="fas fa-times"></i></button>
         </div>
-        <div class="sidebar-body" id="cartItems">
-            <div class="sidebar-empty">
-                <i class="fas fa-shopping-basket"></i>
-                <p>Your cart is empty</p>
-                <button class="btn btn-outline" onclick="closeCart()">Browse Products</button>
-            </div>
-        </div>
-        <div class="sidebar-footer" id="cartFooter">
+        <div class="panel-body" id="cartItems"></div>
+        <div class="panel-foot" id="cartFoot">
             <div class="cart-total-row">
-                <span>Total</span>
-                <span id="cartTotal">₹0.00</span>
+                <span>TOTAL</span>
+                <span id="cartTotal" class="neon-word">₹0.00</span>
             </div>
-            <div class="checkout-form">
-                <div class="form-group">
-                    <label><i class="fab fa-discord"></i> Discord Username <span class="req">*</span></label>
-                    <input type="text" id="checkoutDiscord" placeholder="e.g. user#1234">
+            <div class="checkout-fields">
+                <div class="cf-group">
+                    <label><i class="fab fa-discord"></i> DISCORD USERNAME *</label>
+                    <input type="text" id="checkoutDiscord" placeholder="user#1234">
                 </div>
-                <div class="form-group">
-                    <label><i class="fab fa-telegram"></i> Telegram (Optional)</label>
+                <div class="cf-group">
+                    <label><i class="fab fa-telegram"></i> TELEGRAM (OPTIONAL)</label>
                     <input type="text" id="checkoutTelegram" placeholder="@username">
                 </div>
-                <div class="form-group">
-                    <label><i class="fab fa-instagram"></i> Instagram (Optional)</label>
+                <div class="cf-group">
+                    <label><i class="fab fa-instagram"></i> INSTAGRAM (OPTIONAL)</label>
                     <input type="text" id="checkoutInstagram" placeholder="@username">
                 </div>
-                <div class="form-group">
-                    <label><i class="fas fa-comment"></i> Message</label>
-                    <textarea id="checkoutMessage" placeholder="Any special instructions..."></textarea>
+                <div class="cf-group">
+                    <label><i class="fas fa-comment-dots"></i> MESSAGE</label>
+                    <textarea id="checkoutMessage" placeholder="Any notes..."></textarea>
                 </div>
             </div>
-            <div class="payment-selector">
-                <p>Payment Method</p>
-                <div class="payment-opts">
-                    <button class="pay-opt active" id="payUPI" onclick="selectPayment('upi')">
-                        <i class="fas fa-qrcode"></i> UPI
-                    </button>
-                    <button class="pay-opt" id="payLTC" onclick="selectPayment('ltc')">
-                        <i class="fab fa-bitcoin"></i> LTC
-                    </button>
+            <div class="pay-method-block">
+                <div class="pay-method-label">PAYMENT METHOD</div>
+                <div class="pay-opts">
+                    <button class="popt active" id="payUPI" onclick="selectPayment('upi')"><i class="fas fa-qrcode"></i> UPI</button>
+                    <button class="popt" id="payLTC" onclick="selectPayment('ltc')"><i class="fab fa-bitcoin"></i> LITECOIN</button>
                 </div>
             </div>
-            <button class="btn btn-primary btn-full" onclick="proceedToCheckout()">
-                <i class="fas fa-lock"></i> Secure Checkout
+            <button class="cbtn cbtn-primary btn-full" onclick="proceedToCheckout()">
+                <i class="fas fa-lock"></i> SECURE CHECKOUT
             </button>
         </div>
     </div>
 
-    <div class="modal-overlay" id="overlay" onclick="closeAll()"></div>
+    <div class="cyber-overlay" id="overlay" onclick="closeAll()"></div>
 
-    <div class="modal" id="checkoutModal">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeCheckoutModal()"><i class="fas fa-times"></i></button>
-            <div id="checkoutStep1" class="checkout-step">
-                <div class="modal-icon">
-                    <i class="fas fa-qrcode"></i>
-                </div>
-                <h2 id="paymentTitle">Scan to Pay</h2>
-                <p id="paymentInfo">Scan the QR code with your payment app</p>
-                <div class="qr-wrapper" id="qrContainer">
-                    <div id="qrCode"></div>
-                </div>
-                <div id="ltcAddressContainer" class="ltc-box hidden">
-                    <p class="ltc-label">LTC Address</p>
-                    <div class="ltc-copy">
-                        <code id="ltcAddress">LTC_ADDRESS</code>
+    <div class="cyber-modal" id="checkoutModal">
+        <div class="cmodal-box">
+            <button class="cmodal-close" onclick="closeCheckoutModal()"><i class="fas fa-times"></i></button>
+            <div id="checkoutStep1" class="cmodal-step">
+                <div class="cmodal-icon"><i class="fas fa-qrcode"></i></div>
+                <h2 id="paymentTitle">SCAN TO PAY</h2>
+                <p id="paymentInfo">Scan QR code with your payment app</p>
+                <div class="qr-frame" id="qrContainer"><div id="qrCode"></div></div>
+                <div id="ltcBox" class="ltc-frame hidden">
+                    <div class="ltc-label-text">// LTC ADDRESS</div>
+                    <div class="ltc-row">
+                        <code id="ltcAddress"></code>
                         <button onclick="copyLTC()"><i class="fas fa-copy"></i></button>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-full" onclick="confirmPayment()">
-                    <i class="fas fa-check-circle"></i> I've Completed Payment
+                <button class="cbtn cbtn-primary btn-full" onclick="confirmPayment()">
+                    <i class="fas fa-check-circle"></i> PAYMENT CONFIRMED
                 </button>
             </div>
-            <div id="checkoutStep2" class="checkout-step hidden">
-                <div class="success-icon">
-                    <i class="fas fa-check"></i>
+            <div id="checkoutStep2" class="cmodal-step hidden">
+                <div class="success-hex">
+                    <svg viewBox="0 0 100 100"><polygon points="50,5 92,27.5 92,72.5 50,95 8,72.5 8,27.5" fill="none" stroke="currentColor" stroke-width="3"/><text x="50" y="56" text-anchor="middle" dominant-baseline="middle" font-size="32" fill="currentColor">✓</text></svg>
                 </div>
-                <h2>Order Placed!</h2>
-                <p>Thank you! Your order has been received. Contact us for delivery:</p>
-                <div class="contact-links">
-                    <a href="https://t.me/alen_ftw" target="_blank" class="contact-link tg">
-                        <i class="fab fa-telegram"></i> Telegram
-                    </a>
-                    <a href="https://discord.gg/9NYH7XY3W2" target="_blank" class="contact-link dc">
-                        <i class="fab fa-discord"></i> Discord
-                    </a>
-                    <a href="https://instagram.com/legacycustoms" target="_blank" class="contact-link ig">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
+                <h2>ORDER TRANSMITTED</h2>
+                <p>Your order is confirmed. Contact us for delivery:</p>
+                <div class="contact-grid">
+                    <a href="https://t.me/alen_ftw" target="_blank" class="contact-node tg"><i class="fab fa-telegram"></i><span>TELEGRAM</span></a>
+                    <a href="https://discord.gg/9NYH7XY3W2" target="_blank" class="contact-node dc"><i class="fab fa-discord"></i><span>DISCORD</span></a>
+                    <a href="https://instagram.com/legacycustoms" target="_blank" class="contact-node ig"><i class="fab fa-instagram"></i><span>INSTAGRAM</span></a>
                 </div>
-                <button class="btn btn-outline" onclick="closeCheckoutModal()">Done</button>
+                <button class="cbtn cbtn-ghost btn-full" onclick="closeCheckoutModal()">CLOSE TERMINAL</button>
             </div>
         </div>
     </div>
 
-    <div class="modal" id="loginModal">
-        <div class="modal-box modal-sm">
-            <button class="modal-close" onclick="closeLoginModal()"><i class="fas fa-times"></i></button>
-            <div class="modal-icon"><i class="fas fa-user-shield"></i></div>
-            <h2>Admin Login</h2>
-            <p class="modal-sub">Enter your credentials to continue</p>
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" id="loginUsername" placeholder="Enter username" required autocomplete="off">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <div class="input-with-icon">
-                        <input type="password" id="loginPassword" placeholder="Enter password" required>
-                        <button type="button" onclick="togglePassword()"><i class="fas fa-eye" id="eyeIcon"></i></button>
-                    </div>
-                </div>
-                <div class="form-error hidden" id="loginError">
-                    <i class="fas fa-exclamation-circle"></i> Invalid username or password
-                </div>
-                <button type="submit" class="btn btn-primary btn-full">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </button>
-            </form>
+    <div class="cyber-modal" id="compareModal">
+        <div class="cmodal-box compare-modal-box">
+            <button class="cmodal-close" onclick="closeCompareModal()"><i class="fas fa-times"></i></button>
+            <h2 class="cmodal-title">PRODUCT <span class="neon-word">COMPARISON</span></h2>
+            <div id="compareContent"></div>
         </div>
     </div>
 
-    <div class="modal" id="adminModal">
-        <div class="modal-box modal-lg">
-            <button class="modal-close" onclick="closeAdminPanel()"><i class="fas fa-times"></i></button>
-            <div class="admin-head">
-                <div class="admin-title">
-                    <div class="modal-icon sm"><i class="fas fa-cog"></i></div>
-                    <h2>Product Management</h2>
-                </div>
-                <button class="btn btn-ghost btn-sm" onclick="handleLogout()">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </button>
-            </div>
-            <div class="tab-bar">
-                <button class="tab active" id="tab-add" onclick="switchAdminTab('add')">
-                    <i class="fas fa-plus"></i> Add Product
-                </button>
-                <button class="tab" id="tab-manage" onclick="switchAdminTab('manage')">
-                    <i class="fas fa-list"></i> Manage Products
-                </button>
-            </div>
-            <div id="addProductTab" class="tab-content">
-                <form id="productForm" onsubmit="saveProduct(event)">
-                    <input type="hidden" id="editProductId">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Product Name</label>
-                            <input type="text" id="productName" placeholder="e.g., Discord Nitro" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Duration</label>
-                            <input type="text" id="productDuration" placeholder="e.g., 1 Month" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Sale Price (₹)</label>
-                            <input type="number" id="productPrice" step="0.01" placeholder="9.99" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Original Price (₹)</label>
-                            <input type="number" id="productOriginalPrice" step="0.01" placeholder="19.99" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Product Image URL</label>
-                        <input type="url" id="productImage" placeholder="https://example.com/image.png">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Custom QR Code URL</label>
-                            <input type="url" id="productQR" placeholder="https://example.com/qr.png">
-                        </div>
-                        <div class="form-group">
-                            <label>Custom LTC Address</label>
-                            <input type="text" id="productLTC" placeholder="LTC Address">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Card Color Theme</label>
-                        <select id="productColor">
-                            <option value="purple">Purple Galaxy</option>
-                            <option value="blue">Ocean Blue</option>
-                            <option value="pink">Rose Pink</option>
-                            <option value="gold">Golden</option>
-                            <option value="green">Emerald</option>
-                            <option value="orange">Sunset Orange</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> <span id="submitBtnText">Add Product</span>
-                    </button>
-                </form>
-            </div>
-            <div id="manageProductTab" class="tab-content hidden">
-                <div id="adminProductList" class="admin-product-list"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="quickviewModal">
-        <div class="modal-box modal-sm">
-            <button class="modal-close" onclick="closeQuickview()"><i class="fas fa-times"></i></button>
+    <div class="cyber-modal" id="quickviewModal">
+        <div class="cmodal-box qv-box">
+            <button class="cmodal-close" onclick="closeQuickview()"><i class="fas fa-times"></i></button>
             <div id="quickviewContent"></div>
         </div>
     </div>
 
-    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <div class="cyber-modal" id="loginModal">
+        <div class="cmodal-box cmodal-sm">
+            <button class="cmodal-close" onclick="closeLoginModal()"><i class="fas fa-times"></i></button>
+            <div class="cmodal-icon"><i class="fas fa-terminal"></i></div>
+            <h2>ADMIN ACCESS</h2>
+            <p class="cmodal-sub">// Enter credentials to authenticate</p>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="cf-group">
+                    <label>USERNAME</label>
+                    <input type="text" id="loginUsername" placeholder="admin" required autocomplete="off">
+                </div>
+                <div class="cf-group">
+                    <label>PASSWORD</label>
+                    <div class="pw-wrap">
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                        <button type="button" onclick="togglePassword()"><i class="fas fa-eye" id="eyeIcon"></i></button>
+                    </div>
+                </div>
+                <div class="login-err hidden" id="loginError"><i class="fas fa-exclamation-triangle"></i> ACCESS DENIED — Invalid credentials</div>
+                <button type="submit" class="cbtn cbtn-primary btn-full"><i class="fas fa-sign-in-alt"></i> AUTHENTICATE</button>
+            </form>
+        </div>
+    </div>
 
-    <footer id="contact">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <div class="footer-logo">
-                    <div class="logo-mark sm"><i class="fas fa-crown"></i></div>
-                    <span>Legacy<span class="accent">Store</span></span>
+    <div class="cyber-modal" id="adminModal">
+        <div class="cmodal-box cmodal-lg">
+            <button class="cmodal-close" onclick="closeAdminPanel()"><i class="fas fa-times"></i></button>
+            <div class="admin-cyber-head">
+                <div class="admin-cyber-title">
+                    <div class="cmodal-icon sm"><i class="fas fa-cog fa-spin-slow"></i></div>
+                    <h2>PRODUCT MANAGER</h2>
                 </div>
-                <p>Premium Discord services at the best prices. Trusted by thousands worldwide.</p>
-                <div class="trust-row">
-                    <span class="trust-chip"><i class="fas fa-check-circle"></i> Verified Seller</span>
-                    <span class="trust-chip"><i class="fas fa-shield-alt"></i> Secure Payments</span>
-                </div>
+                <button class="cbtn cbtn-ghost cbtn-sm" onclick="handleLogout()"><i class="fas fa-power-off"></i> LOGOUT</button>
             </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="#products">Products</a>
-                <a href="#features">About Us</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contact">Contact</a>
+            <div class="cyber-tabs">
+                <button class="ctab active" id="tab-add" onclick="switchAdminTab('add')"><i class="fas fa-plus-circle"></i> ADD</button>
+                <button class="ctab" id="tab-manage" onclick="switchAdminTab('manage')"><i class="fas fa-list"></i> MANAGE</button>
             </div>
-            <div class="footer-col">
-                <h4>Connect With Us</h4>
-                <div class="social-row">
-                    <a href="https://t.me/alen_ftw" target="_blank" class="soc-btn tg"><i class="fab fa-telegram"></i></a>
-                    <a href="https://discord.gg/9NYH7XY3W2" target="_blank" class="soc-btn dc"><i class="fab fa-discord"></i></a>
-                    <a href="https://instagram.com/legacycustoms" target="_blank" class="soc-btn ig"><i class="fab fa-instagram"></i></a>
-                </div>
-                <p class="handle">@legacycustoms</p>
+            <div id="addProductTab" class="ctab-content">
+                <form id="productForm" onsubmit="saveProduct(event)">
+                    <input type="hidden" id="editProductId">
+                    <div class="form-row-cyber">
+                        <div class="cf-group"><label>PRODUCT NAME</label><input type="text" id="productName" placeholder="Discord Nitro" required></div>
+                        <div class="cf-group"><label>DURATION</label><input type="text" id="productDuration" placeholder="1 Month" required></div>
+                    </div>
+                    <div class="form-row-cyber">
+                        <div class="cf-group"><label>SALE PRICE (₹)</label><input type="number" id="productPrice" step="0.01" placeholder="9.99" required></div>
+                        <div class="cf-group"><label>ORIGINAL PRICE (₹)</label><input type="number" id="productOriginalPrice" step="0.01" placeholder="19.99" required></div>
+                    </div>
+                    <div class="cf-group"><label>IMAGE URL</label><input type="url" id="productImage" placeholder="https://..."></div>
+                    <div class="form-row-cyber">
+                        <div class="cf-group"><label>CUSTOM QR URL</label><input type="url" id="productQR" placeholder="https://..."></div>
+                        <div class="cf-group"><label>LTC ADDRESS</label><input type="text" id="productLTC" placeholder="LTC..."></div>
+                    </div>
+                    <div class="cf-group">
+                        <label>CARD THEME</label>
+                        <select id="productColor">
+                            <option value="purple">PURPLE GALAXY</option>
+                            <option value="blue">OCEAN BLUE</option>
+                            <option value="pink">ROSE PINK</option>
+                            <option value="gold">GOLDEN</option>
+                            <option value="green">EMERALD</option>
+                            <option value="orange">SUNSET ORANGE</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="cbtn cbtn-primary"><i class="fas fa-save"></i> <span id="submitBtnText">SAVE PRODUCT</span></button>
+                </form>
+            </div>
+            <div id="manageProductTab" class="ctab-content hidden">
+                <div id="adminProductList"></div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2025 Legacy Store. All rights reserved.</p>
+    </div>
+
+    <button class="scroll-top-cyber" id="scrollTopBtn" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <footer id="contact" class="cyber-footer">
+        <div class="footer-grid-line"></div>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo-block">
+                    <div class="logo-hex sm">
+                        <svg viewBox="0 0 60 60" fill="none"><polygon points="30,2 56,16 56,44 30,58 4,44 4,16" stroke="currentColor" stroke-width="2" fill="none"/><text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-size="22" fill="currentColor" font-family="Orbitron">L</text></svg>
+                    </div>
+                    <div class="logo-text-block">
+                        <span class="logo-main">LEGACY<span class="logo-dot">.</span>STORE</span>
+                        <span class="logo-sub">// v2.0</span>
+                    </div>
+                </div>
+                <p>Premium Discord services. Trusted by 10,000+ customers globally.</p>
+                <div class="trust-row-cyber">
+                    <span><i class="fas fa-check-circle"></i> VERIFIED SELLER</span>
+                    <span><i class="fas fa-shield-alt"></i> SECURE PAYMENTS</span>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>// NAVIGATION</h4>
+                <a href="#products">01 — PRODUCTS</a>
+                <a href="#specs">02 — SPECS</a>
+                <a href="#reviews">03 — REVIEWS</a>
+                <a href="#faq">04 — FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>// CONNECT</h4>
+                <div class="social-cyber">
+                    <a href="https://t.me/alen_ftw" target="_blank" class="sc-btn tg"><i class="fab fa-telegram"></i><span>TELEGRAM</span></a>
+                    <a href="https://discord.gg/9NYH7XY3W2" target="_blank" class="sc-btn dc"><i class="fab fa-discord"></i><span>DISCORD</span></a>
+                    <a href="https://instagram.com/legacycustoms" target="_blank" class="sc-btn ig"><i class="fab fa-instagram"></i><span>INSTAGRAM</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-cyber">
+            <span>© 2025 LEGACY.STORE — ALL RIGHTS RESERVED</span>
+            <span class="footer-sys">SYSTEM STATUS: <span class="neon-word">ONLINE</span></span>
         </div>
     </footer>
 

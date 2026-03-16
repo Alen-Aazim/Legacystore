@@ -2,7 +2,7 @@
 
 ## Overview
 
-Legacy Store is a modern e-commerce web application for selling Discord Nitro products. The application features a premium dark theme with glass-morphism effects, animated gradient orb backgrounds, a shopping cart system, and a secure admin panel for product management. Built as a single-page application using vanilla JavaScript with an Express.js backend for API endpoints and static file serving.
+Legacy Store is a modern e-commerce web application for selling Discord Nitro products. Built as a single-page application using vanilla JavaScript with an Express.js backend. Features a clean dark theme with indigo/cyan accents, a product grid with search/filter/sort, shopping cart, wishlist, quick-view, FAQ, and a secure admin panel for product management.
 
 ## User Preferences
 
@@ -12,60 +12,79 @@ Preferred communication style: Simple, everyday language.
 
 ### Frontend Architecture
 - **Single Page Application**: Pure HTML/CSS/JavaScript without frameworks
-- **Design System**: Dark theme with animated gradient orbs, mesh grid, particle effects, and glass-morphism (frosted glass) UI components
-- **Styling Approach**: CSS custom properties for theming, Poppins font family via Google Fonts, Font Awesome 6.4.0 for icons
-- **State Management**: Vanilla JavaScript with in-memory cart state; products fetched from server API
-- **Key UI Features**: Product grid with color-themed cards, slide-out cart sidebar, modal-based checkout flow with QR code payment, admin login/management modals
+- **Design System**: Dark theme (deep navy #080b14) with indigo/cyan accent palette, Inter + Space Grotesk fonts, Font Awesome 6.4.0 icons
+- **Styling Approach**: CSS custom properties, modern glassmorphism cards, smooth transitions
+- **State Management**: Vanilla JS in-memory cart/wishlist state; products fetched from server API
+- **Key UI Features**:
+  - Hero section with orbital animation and floating badges
+  - Product search bar, category filter tabs, sort dropdown
+  - Wishlist sidebar with add-to-cart shortcut
+  - Cart sidebar with quantity controls and checkout form
+  - Quick-view modal for product details
+  - QR code and LTC payment checkout flow
+  - FAQ accordion section
+  - Scroll-to-top button
+  - Mobile hamburger menu
+  - Admin login/management modals with tabbed UI
 
 ### Backend Architecture
-- **Express.js Server**: Node.js with Express framework handling both static files and REST API
+- **Express.js Server**: Node.js with Express handling both static files and REST API
+- **Port**: 5000, bound to 0.0.0.0
 - **REST API Endpoints**:
-  - `POST /api/admin/login` - Authenticate admin and receive session token
-  - `POST /api/admin/logout` - Invalidate session token
-  - `GET /api/admin/verify` - Validate current session token
-  - `GET /api/products` - Public endpoint to list all products
-  - `POST /api/products` - Add new product (requires authentication)
-  - `PUT /api/products/:id` - Update existing product (requires authentication)
-  - `DELETE /api/products/:id` - Remove product (requires authentication)
-- **Port Configuration**: Server runs on port 5000, bound to 0.0.0.0 for external access
+  - `POST /api/admin/login` - Authenticate admin
+  - `POST /api/admin/logout` - Invalidate session
+  - `GET /api/admin/verify` - Validate session
+  - `GET /api/products` - Public product list
+  - `POST /api/products` - Add product (auth required)
+  - `PUT /api/products/:id` - Update product (auth required)
+  - `DELETE /api/products/:id` - Delete product (auth required)
+  - `POST /api/checkout` - Submit order (sends Discord webhook if configured)
 
 ### Authentication & Security
-- **Server-side Authentication**: Admin credentials verified on server, not exposed to browser
-- **Session Tokens**: 64-character random tokens generated via crypto module
-- **Token Storage**: Sessions persisted in `.sessions.json` file with 24-hour expiry
-- **Client Token Handling**: Tokens stored in browser sessionStorage, sent via `X-Admin-Token` header
+- Admin credentials verified server-side
+- 64-character random session tokens via Node.js crypto
+- Sessions stored in `.sessions.json` with 24-hour expiry
+- Client stores token in sessionStorage, sends as `X-Admin-Token` header
 
 ### Data Storage
-- **JSON File Storage**: Products stored in `products.json`, sessions in `.sessions.json`
-- **Shared State**: All users see identical product catalog (server-side source of truth)
-- **No Database**: Flat file storage; suitable for small-scale deployment
+- Products: `products.json` (flat file)
+- Sessions: `.sessions.json` (flat file)
+- No database — suitable for small-scale deployment
 
 ### File Structure
 ```
-/indexhtmlzipzip/indexhtmlzip/
-├── index.html       # Main store page with product grid, cart, modals
-├── styles.css       # All styling including animations and glass effects
-├── script.js        # Cart logic, API calls, admin panel, product rendering
-├── server.js        # Express server with REST API and static file serving
-├── products.json    # Product catalog data
-├── .sessions.json   # Active admin session tokens
-└── replit.md        # Project documentation
+/
+├── public/
+│   ├── index.html      # Main store page
+│   ├── styles.css      # All styling (Inter/Space Grotesk, dark theme, responsive)
+│   └── script.js       # Cart, wishlist, quickview, FAQ, admin, filter/search logic
+├── server.js           # Express server + REST API
+├── products.json       # Product catalog
+├── .sessions.json      # Active admin sessions
+└── replit.md           # Project documentation
 ```
 
 ## External Dependencies
 
 ### NPM Packages
-- **Express 5.2.1**: Web framework for serving static files and handling API routes
+- **Express 5.2.1**: Web framework
 
 ### CDN Resources
-- **Google Fonts**: Poppins font family (weights 300-900)
-- **Font Awesome 6.4.0**: Icon library for UI elements (gems, crowns, shopping bag, etc.)
+- **Google Fonts**: Inter (300–800), Space Grotesk (400–700)
+- **Font Awesome 6.4.0**: Icons
+- **QRCodeJS**: QR code generation in checkout modal
 
-### Social/Contact Integrations
-- **Telegram**: Customer support contact button
-- **Discord**: Community/support contact button
-- **Instagram**: Social media presence button
+### Environment Variables
+- `DISCORD_WEBHOOK_URL` (optional): Webhook URL for order notifications
 
-### Payment Flow
-- QR code-based payment system (implementation details in checkout modal)
-- No third-party payment processor integration currently visible
+### New Features Added (v2)
+1. Product search bar with live filtering
+2. Category filter tabs (All / Nitro Basic / Nitro / Server Boost)
+3. Sort by price and discount
+4. Wishlist sidebar with heart button on cards
+5. Quick-view product modal
+6. FAQ accordion section
+7. Mobile hamburger navigation menu
+8. Scroll-to-top button
+9. Counter animation for hero stats
+10. Completely redesigned UI — new dark indigo theme, orbital hero, modern card layout
